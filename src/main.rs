@@ -1,11 +1,12 @@
 use std::env;
 use std::fs::{File, OpenOptions};
-use std::io::prelude::*;
 use std::path::Path; 
+use std::io;
+use std::io::Write;
 
 fn main() {
-
-    match check_file() {
+    let file_path = "C:/Users/Ross/OneDrive/Documents/Programs/Rust/Misc/todo/src/list.txt";
+    match check_file(file_path) {
         Ok(file) => {
             // File was successfully opened or created
             // Do something with the file here
@@ -26,24 +27,27 @@ fn main() {
     println!("4 - Show list");
 
     let args: Vec<String> = env::args().collect();
-    println!("{:?}", args);
-    let input = args[1].clone();
+    
+    let choice = args[1].clone();
+    let input = args[2].clone();
 
-    if input =="1"{
-        add()
-    } else if input =="2" {
+    if choice =="add"{
+        match add(&file_path, input) {
+            Ok(()) => println!("File written successfully."),
+            Err(err) => eprintln!("Error writing to file: {}", err),
+        }
+    } else if choice =="2" {
         remove()
-    } else if input =="3" {
+    } else if choice =="3" {
         complete()
-    } else if input == "4" {
+    } else if choice == "4" {
         list()
     } else {
         println!("Invalid Input");
     }
 }
 
-fn check_file() -> Result<File, std::io::Error> {
-    let file_path = "C:/Users/Ross/OneDrive/Documents/Programs/Rust/Misc/todo/src/list.txt";
+fn check_file(file_path: &str) -> Result<File, std::io::Error> {
 
     let exists = Path::new(&file_path).exists();
 
@@ -61,10 +65,17 @@ fn check_file() -> Result<File, std::io::Error> {
     }
 }
 
+fn add(file_path: &str, input: String) -> Result<(), io::Error> {
+    let mut file = OpenOptions::new()
+        .write(true)
+        .create(true)
+        .open(&file_path)?;
 
+    // Write the input string to the file
+    file.write_all(input.as_bytes())?;
 
-fn add() {
-    println!("adding")
+    // If necessary, you can return Ok(()) to indicate success
+    Ok(())
 }
 
 fn remove(){
