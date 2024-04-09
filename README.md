@@ -20,8 +20,6 @@ These instructions will help you get a copy of the project up and running on you
 
 ### Prerequisites
 
-List any prerequisites required to run the program, such as Rust and Cargo.
-
 Rust (version x.x.x)
 Cargo (version x.x.x)
 vbnet
@@ -34,36 +32,16 @@ A step-by-step guide on how to install and set up the program:
 1. Clone the repository:
 git clone https://github.com/your-username/repo-name.git
 
-css
-Copy code
-
 2. Navigate to the project directory:
 cd repo-name
-
-markdown
-Copy code
 
 3. Build the project:
 cargo build
 
-arduino
-Copy code
-
 ## Usage
-
-Provide instructions on how to use the program and any available command-line options or arguments.
 
 cargo run -- [arguments]
 
-css
-Copy code
-
-## Contributing
-
-Explain how others can contribute to your project. Include guidelines for pull requests and reporting issues.
-
-## License
-
-This project is licensed under the [License Name] - see the [LICENSE.md](LICENSE.md) file
-
-yes i used chatgpt for this sue me
+avalid arguments include:
+- add "example"
+show

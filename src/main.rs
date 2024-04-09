@@ -1,7 +1,7 @@
 use std::env;
 use std::fs::{File, OpenOptions};
 use std::path::Path; 
-use std::io::{self, BufRead, BufReader, Read, Write};
+use std::io::{self, BufRead, BufReader, Write};
 
 fn main() {
     let file_path = "C:/Users/Ross/OneDrive/Documents/Programs/Rust/Misc/todo/src/list.txt";
